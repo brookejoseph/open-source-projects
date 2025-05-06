@@ -47,10 +47,11 @@ async function searchGitHubProjects(searchParams: { [key: string]: string | stri
 }
 
 export default async function SearchPage({
-  searchParams,
+  searchParams:rawSearchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
+  const searchParams = await rawSearchParams;
   const query = typeof searchParams.q === "string" ? searchParams.q : ""
   const level = typeof searchParams.level === "string" ? searchParams.level : "any"
   const category = typeof searchParams.category === "string" ? searchParams.category : "any"
